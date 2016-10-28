@@ -1,0 +1,67 @@
+// Our variables
+$base-font-family: 'Play';
+$base-font-size: 100%;
+$base-font-weight: 400;
+$title-font-family: 'Play';
+$small-font-size: $base-font-size * 1;
+$base-line-height: 1.5em;
+$base-border-radius: 2px;
+$spacing-unit: 30px;
+
+$text-color: #000;
+$background-color: #fff;
+$brand-color: #333;
+
+$grey-color: #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark: darken($grey-color, 25%);
+
+$right-bg-color: #393939;
+$left-bg-color: #17171f;
+
+$content-wrapper-width: 60%;
+$left-wrapper-width: (100% - $content-wrapper-width)/2;
+$right-wrapper-width: (100% - $content-wrapper-width)/2;
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin rounded($radius: 0.5em) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin rounded-top($radius: 0.5em) {
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin box-shadows($shadows...) {
+  box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+}
+
+@mixin non-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

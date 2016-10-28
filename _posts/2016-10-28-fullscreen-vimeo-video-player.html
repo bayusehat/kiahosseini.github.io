@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Fullscreen Vimeo Video Player"
+date:   2016-10-28 22:00:00 +0330
+categories: coding
+tags: [html, css3, coffeescript, javascript, vimeo]
+post_id: fullscreen_vimeo_player
+---
+<p>
+    Simple Solution to keep a Vimeo Video Player in fullscreen size.
+
+</p>
+{% include project_iframe.html file_name="video_player.html" %}
+<p>
+    To always keep proportion of the video in which the Vimeo Player fits it's 
+    video Frame into maximum possible screen and also not showing the black bars
+    and window's scroll bars, I had to sync the iframe (embedded by vimeo)'s 
+    width & height ratio with the video's aspect ratio.
+    <br />
+    Let's assume the video aspect ratio is 16:9. So in order to keep the most
+    possible width and height of our container
+    (in current view without scroll bar) which the iframe tries to fits itself
+    into, we should restrict the height to be product of width and ratio 
+    (width * 56.25 / 100).
+    <br />
+    I made the use of JavaScript for calculating the current screen size on 
+    window's resize event and getting the most possible width with 
+    current height.
+</p>
+{% include code.html file_name="video_player.html" language="html" %}
+{% include code.html file_name="video_player.less" language="less" %}
+{% include code.html file_name="video_player.coffee" language="coffeescreipt" %}

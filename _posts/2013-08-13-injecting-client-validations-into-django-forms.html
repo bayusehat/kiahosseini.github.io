@@ -1,0 +1,92 @@
+---
+layout: post
+title:  "Injecting Client Validations Into Django Forms"
+date:   2013-08-13 22:00:00 +0330
+categories: coding
+tags: [python, django, django-forms]
+post_id: inject
+---
+<p>
+    I guess most
+    {% include link.html 
+        href="http://www.djangoproject.com" 
+        text="Django" 
+        external=true %}
+    developers are happy with it's 
+    {% include link.html 
+        href="https://docs.djangoproject.com/en/1.4/topics/forms/" 
+        text="Forms" 
+        external=true %}
+    , but for front-end usage.
+    I myself will be more happy if it supports client validation, live data
+    binding, layout rendering and etc. Let's,
+    focus on client validation for now in this post.
+</p>
+
+<p>
+    <span class="label label-problem">Problem:</span>
+    We all know that there are many javascript libraries and jquery plugins
+    which can take roles of validating html form's fields. 
+    All of these libs and plugins require form fields those having proper
+    attributes of validation.
+    So yes. The problem is that Django doesn't provide these attributes itself.
+    <span>
+        I use 
+        {% include link.html 
+            href="http://jqueryvalidation.org/"
+            text="jQuery Validation"
+            external=true %}
+        plugin.
+    </span>
+</p>
+<p>
+    <span class="label label-solution">Solution:</span>
+    Here I am going to create a ValidateForm class that injects desired
+    validation attributes into form's fields.
+</p>
+{% include code.html file_name='forms.py' language='python' %}
+<p>
+    <span >Add "our-base-form" css class to your form tag</span>
+</p>
+{% include code.html file_name='our_base_form.js' language='javascript' %}
+<p>
+    Now  create a sample contact form:
+</p>
+{% include code.html file_name='contact_form.py' language='python' %}
+<p>
+    Must print something like:
+</p>
+{% include code.html file_name='contact_form_out.html' language='xml' %}
+<p>
+    <span class="label label-problem">Problem:</span>
+    Okay. This works for any new form we create that can easily inherit from our
+    <em>BaseForm</em> or <em>BaseModelForm.</em>
+    But what about auto-generated forms; let's say
+    {% include link.html 
+        href="https://docs.djangoproject.com/en/1.4/ref/contrib/admin/"
+        text="admin" 
+        external=true %}
+    ones?
+   
+</p>
+
+<p>
+    <span class="label label-solution">Solution:</span>
+    No, it's not a proper way to create a custom form for every
+    {% include link.html 
+        href="https://docs.djangoproject.com/en/1.4/ref/contrib/admin/#modeladmin-objects" 
+        text="ModelAdmin" 
+        external=true %}
+    .
+    So what? Yes, Thanks for Python.
+</p>
+{% include code.html file_name='__init__.py' language='python' %}
+<p class="inner-note">
+    <span> You can find and fork source codes on my
+       {% include link.html 
+            href="https://github.com/kiahosseini/django-form-validation" 
+            text="github page" 
+            external=true %}
+       .
+</span>
+</p>

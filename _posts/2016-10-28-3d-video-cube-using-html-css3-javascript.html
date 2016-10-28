@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "3D Video Cube, Using HTML, CSS 3 and JavaScript!"
+date:   2016-10-28 22:00:00 +0330
+categories: coding
+tags: [html, css3, coffeescript, javascript, 3d]
+post_id: 3d_video_cube
+---
+<p>
+    I want to share my approach toward implementing 3D Video Cube from Vimeo.
+    <br />
+    Click on the video below to see it in action:
+</p>
+{% include project_iframe.html file_name="3dvideo.html" %}
+<p>
+    I implemented a 3D cube using <em>CSS3 transform</em> in perspective view.
+    <br />
+    Created 6 divs for presenting <em>front,back,bottom,top,right,left</em> sides, CSS3 transition for animating the movement implemented by JavaScript.
+    <br />
+    You can rotate the cube by mouse controls and also <em>arrow keys </em> (space key will reset the position).
+    <br />
+    By <em>double-clicking</em> on each side it will get toggled between muted/unmuted.
+    <br />
+    I scaled vimeo iframe to 2 as I wanted to fill all sides' spaces with playing video.
+</p>
+{% include code.html file_name="3dvideo.html" language="html" %}
+{% include code.html file_name="3dvideo.less" language="less" %}
+{% include code.html file_name="3dvideo.coffee" language="coffeescreipt" %}

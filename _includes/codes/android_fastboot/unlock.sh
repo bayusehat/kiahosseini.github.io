@@ -1,0 +1,1 @@
+sudo fastboot flash unlocktoken Unlock_code.bin

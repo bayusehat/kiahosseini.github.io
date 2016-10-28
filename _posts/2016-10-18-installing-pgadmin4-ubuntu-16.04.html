@@ -1,0 +1,128 @@
+---
+layout: post
+title:  "Installing pgAdmin 4 on Ubuntu Desktop 16.04"
+date:   2016-10-18 22:00:00 +0330
+categories: help
+tags: [python, pgadmin4, ubuntu, virtualenv]
+post_id: pgadmin4_install
+---
+<p>
+    {% include link.html 
+        href="https://www.pgadmin.org/" 
+        external=true 
+        text="pgAdmin 4 v1.0" %}
+     released on 2016-09-29. 
+    <br />
+    As I was asked about how to install that it can be
+    easily launched like other programs from Ubuntu launcher, I decided to share
+    this with you.
+</p>
+
+<p>
+    pgAdmin 4 runs with Python 2.
+    <br />
+    So make sure that you have Python 2 installed on your system.
+    Also we will use 
+    {% include link.html 
+        href="https://pypi.python.org/pypi/pip" 
+        external=true text="pip" %} and 
+    {% include link.html 
+        href="http://docs.python-guide.org/en/latest/dev/virtualenvs/" 
+        external=true 
+        text="virtualenv" %}
+    and
+    for package management and isolating the python environment required to run
+    pgAdmin 4.
+    <br />
+    Run the commands below to install the requirements.
+</p>
+
+{% include code.html file_name='requirements_install.sh' language='bash' %}
+
+<p>
+    Create a directory to init our isolated python environment there.
+    <br />
+    Let's pick up <em>~/apps/pgadmin4/</em> for instance.
+</p>
+
+{% include code.html file_name='virtualenv_activation.sh' language='bash' %}
+
+<p>
+    Now that you have cloned the environment, you should download and install
+    the <em>wheel</em> package of pgAdmin 4 from 
+    {% include 
+        link.html href="https://ftp.postgresql.org/pub/pgadmin3/pgadmin4/v1.0/pip/pgadmin4-1.0-py2-none-any.whl" 
+        text="here" 
+        download=true %}
+    .
+</p>
+{% include code.html file_name='pgadmin4_install.sh' language='bash' %}
+<p>
+    pgAdmin4 needs <em>config_local.py</em> to run.
+    <br />
+    This file can be cloned from the existing <em>config.py</em> from current 
+    installation path.
+</p>
+{% include code.html file_name='clone_config.sh' language='bash' %}
+<p class="inner-note">
+    You can change the initial values for <em>SECRET_KEY</em>, 
+    <em>SECURITY_PASSWORD_SALT</em> and <em>CSRF_SESSION_KEY</em> manually 
+    in this file.
+</p>
+<p>
+    Test your installation by running:
+</p>
+{% include code.html file_name='test_installation.sh' language='bash' %}
+<p class="inner-note">
+    You may be prompted to enter email and password for new user registeration.
+</p>
+<p>
+    Once you have provided the needed information, you can access the app
+    by browsing <em>http://127.0.0.1:5050/</em>
+</p>
+<p>
+    Now that we are sure about the success in running pgAdmin 4 by calling 
+    the previous command, let's create an Ubuntu launcher for this application.
+</p>
+<p>
+    Create <em>pgAdmin4.sh</em> and <em>pgAdmin4.desktop</em> files:
+</p>
+{% include code.html file_name='create_launcher.sh' language='bash' %}
+<p>
+    Put the contents below in <em>pgAdmin4.sh</em>:
+</p>
+{% include code.html file_name='pgAdmin4.sh' language='bash' %}
+<p>
+    Put the contents below in <em>pgAdmin4.desktop</em>:
+</p>
+{% include code.html file_name='pgAdmin4.desktop' language='bash' %}
+<p>
+    Link <em>pgAdmin4.desktop</em> to <em>~/.local/share/applications/</em>
+    that Ubuntu can autoload the launcher.
+</p>
+{% include code.html file_name='link_launcher.sh' language='bash' %}
+<p>
+    Download  
+    {% include link.html 
+        href="http://kiahosseini.github.io/assets/image/pgadmin4_install/pgadmin.svg" 
+        download=true 
+        text="pgAdmin icon" %}.
+    and save it to <em>~/apps/pagadmin4/</em> as <em>pgadmin.svg</em>.
+    <br />
+    You can also use the command below:
+</p>
+{% include code.html file_name='download_svg_icon.sh' language='bash' %}
+
+<p>
+    That's all.
+    <br />
+    It should now open your browser[tab] loading <em>http://127.0.0.1:5050</em>.
+</p>
+
+<p class="inner-note">
+    You may see an error in loading the page.
+    <br />
+    Try to refresh the page in this case.
+    <br />
+    It may take longer to launch the server. Be patient!
+</p>

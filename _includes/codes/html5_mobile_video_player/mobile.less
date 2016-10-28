@@ -1,0 +1,119 @@
+@import (inline) "reset.css";
+@import "icons/style.css";
+
+body{
+    overflow: hidden;
+    background-color: #000;
+    font-size: 100%;
+    font-family: Sans-serif;
+}
+
+.player-holder {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    background-color: #000;
+    video{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%; 
+    }
+    .controls{
+        @controls_height: 50px;
+        @button_height: @controls_height -  10;
+        position: absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        height: @controls_height;
+        background-color: #4e4e4e;
+        font-size: 0;
+        button{
+            cursor: pointer;
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: inline-block;
+            line-height: @button_height;
+            height: @button_height;
+            margin: (@controls_height - @button_height)/2 0;
+            padding: 0;
+            width: 5%;
+            background: #000;
+            color: #eee;
+            border:0;
+            font-size: 1rem;
+            &.disabled{
+                color: #666;
+            }
+            &:hover{
+                color: #11c678;
+            }
+            &:focus{
+                outline: 0;
+            }
+            &:active{
+                color: #666;
+            }
+            i{
+                font-size: 1.2rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50% ,-50%);
+            }
+        }
+        .progress-holder{
+            font-size: 1em;
+            vertical-align: middle;
+            @progress_height: 20px;
+            margin: (@controls_height - @button_height)/2 0;
+            width:70%;
+            height: @button_height;
+            background: #000;
+            display: inline-block;
+            position: relative;
+            .time{
+                display: inline-block;
+                position: absolute;
+                width: 30%;
+                height: @button_height;
+                line-height: @button_height;
+                text-align: center;
+                right: 0;
+                font-size: 1rem;
+                color: #eee;
+            }
+            .progress{
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                left: 5%;
+                margin-top: -@progress_height/2;
+                display: inline-block;
+                background: #eee;
+                width: 70%;
+                height: @progress_height;
+                .bar{
+                    transition: all 0.2s linear;
+                    position: absolute;
+                    height: @progress_height;
+                    left: 0;
+                    margin-top: -@progress_height/2;
+                    top: 50%;
+                    right:100%;
+                }
+                .loaded-bar{
+                    z-index: 2;
+                    background-color: #999;
+                }
+                .current-time-bar{
+                    z-index: 3;
+                    background-color: #11c678;   
+                }
+            }
+        }
+    }
+}
+

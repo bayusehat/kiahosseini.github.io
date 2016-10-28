@@ -1,0 +1,80 @@
+.left-side {
+  margin-top: $spacing-unit*3;
+  padding: $spacing-unit/2;
+  padding-bottom: $spacing-unit;
+  color: #f8f8f8;
+  height: calc(100% - #{($spacing-unit*4)+$spacing-unit});
+  position: relative;
+  .title-holder {
+    text-align: center;
+    .image-link {
+      overflow: hidden;
+
+      @include rounded(200px);
+      @include box-shadow(
+                      0, 0, 30px, darken($left-bg-color, 20%)
+      );
+      &, img {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+    h1, h2{
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 1em;
+    }
+    h2 {
+      color: #98bbca;
+      font-size: 0.9em;
+    }
+  }
+  .summary {
+    margin: $spacing-unit/2 0;
+    padding: $spacing-unit/2;
+    font-size: 0.9em;
+    border-top: 1px dashed #4d4d4d;
+    p {
+      margin-bottom: $spacing-unit/4;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    a, a:visited, a:active {
+      color: $background-color;
+      text-decoration: underline;
+    }
+  }
+
+  .socials-holder {
+    background-color: rgba(0, 0, 0, .2);
+    padding: $spacing-unit/4;
+    text-align: center;
+    a {
+      display: inline-block;
+      margin: auto $spacing-unit/4;
+      color: $background-color;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+  }
+  .jekyll {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    text-align: center;
+    font-size: 0.8em;
+    a {
+      color: #FFCC00;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

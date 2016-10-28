@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Play'), local('Play-Regular'), url(/assets/fonts/Play-Regular.woff2) format('woff2');
+}

@@ -1,0 +1,8 @@
+{% capture name %}codes/{{ page.post_id }}/{{ include.file_name }}{% endcapture %}
+{% capture code_content %}{% include {{ name }} %}{% endcapture %}
+<div class="code-wrapper">
+{% if include.hide_file_name != true %}
+    <h3 class="file-name">{{ include.file_name }}</h3>
+{% endif %}
+<pre><code class="{{ include.language }}">{{ code_content | xml_escape }}</code></pre>
+</div>

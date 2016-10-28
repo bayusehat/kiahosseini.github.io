@@ -1,0 +1,97 @@
+---
+layout: post
+title:  "Installing Stock ROM on HTC Desire 500, Using Ubuntu 16.04"
+date:   2016-10-27 22:00:00 +0330
+categories: help
+tags: [android, ubuntu, fastboot]
+post_id: android_fastboot
+---
+<p>
+    Yesterday my colleague asked me to fix her HTC Desire 500.
+    <br />
+    The problem was related to Android booting that got stuck in fastboot screen.
+    <br />
+    I wanted to give a shot to solve it. Good experience to share with you :)
+</p>
+<p>
+    Unfortunately, none of the options in boot screen worked, even <em>Reset Factory</em>.
+    <br />
+    So I decided to install a Stock ROM.
+    <br />
+    I found 
+    {% include link.html 
+        href="http://forum.xda-developers.com/desire-500/development/rom-htc-desire-500-android-4-1-2-t2849467" 
+        external=true
+        text="this topic" %} very helpful to solve the problem.
+</p>
+<p class="inner-note">
+    First, I tried to use Windows 10 to solve the problem.
+    <br />
+    But Windows could not recognize the device!
+    <br />
+    Forget it! It is easier to install android tools in Ubuntu (16.04) and no need 
+    to recognize the device in a hard way :)
+</p>
+<p>
+    Install android tools in Ubuntu. Run the commands below:
+</p>
+{% include code.html file_name="install_android_tools.sh" language="bash" %}
+<p>
+    Download {% include link.html 
+        href="http://j.gs/5648760/1344011-103" 
+        external=true
+        text="ROM" %}
+    and {% include link.html 
+        href="http://j.gs/5648760/firmware-1344011" 
+        external=true
+        text="firmware" %}.
+    <br />
+    Copy the ROM*.zip in your SD Card.
+</p>
+<p>
+    We need to flash the recovery.
+</p>
+<p class="inner-note">
+    For more detailed information visit
+    {% include link.html 
+        href="http://www.xda-developers.com/how-to-install-clockworkmod/" 
+        external=true
+        text="here" %}. 
+</p>
+<p>
+    Connect your device with USB cable to your PC.
+    <br />
+    You should see the <em>fastboot usb</em> title on your screen.
+    <br />
+    Download {% include link.html 
+        href="https://docs.google.com/file/d/0B6WBFlAKqe30c0kwdG1VZC1FTlU/edit" 
+        external=true
+        text="CWM-Recovery_PhilZ_by_SPaWn_500.rar" %}
+    <br />
+    Extract <em>CWMRecovery_D500_Philz.img</em>.
+    <br />
+</p>
+<p>
+    Before we start installing the recovery image, we need to unlock the bootloader.
+    <br />
+    So, go and sign up in 
+    {% include link.html 
+        href="https://www.htcdev.com/" 
+        external=true
+        text="htcdev.com" %}
+    and follow the instruction there, to get your device's <em>Unlock_code.bin</em>.
+</p>
+{% include code.html file_name="unlock.sh" language="bash" %}
+<p>
+    Run the command below to flash the recovery, using the already extracted .img file:
+</p>
+{% include code.html file_name="flash_recovery.sh" language="bash" %}
+<p>
+    After booting up the new recovery image, try to <em>Make a full wipe</em>
+    <br />
+    Then try to <em>Install zip from the SD Card</em> (ROM*.zip).
+</p>
+<p>
+    Now you need to install the <em>firmware*.zip</em>
+</p>
+{% include code.html file_name="install_firmware.sh" language="bash" %}

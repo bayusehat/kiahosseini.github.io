@@ -1,0 +1,155 @@
+@import "icons/style.css";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body {
+  overflow: hidden;
+  background-color: #000;
+  font-size: 100%;
+  font-family: Sans-serif;
+}
+.player-holder {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  background-color: #000;
+}
+.player-holder video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.player-holder .controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #4e4e4e;
+  font-size: 0;
+}
+.player-holder .controls button {
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  line-height: 40px;
+  height: 40px;
+  margin: 5px 0;
+  padding: 0;
+  width: 5%;
+  background: #000;
+  color: #eee;
+  border: 0;
+  font-size: 1rem;
+}
+.player-holder .controls button.disabled {
+  color: #666;
+}
+.player-holder .controls button:hover {
+  color: #11c678;
+}
+.player-holder .controls button:focus {
+  outline: 0;
+}
+.player-holder .controls button:active {
+  color: #666;
+}
+.player-holder .controls button i {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.player-holder .controls .progress-holder {
+  font-size: 1em;
+  vertical-align: middle;
+  margin: 5px 0;
+  width: 70%;
+  height: 40px;
+  background: #000;
+  display: inline-block;
+  position: relative;
+}
+.player-holder .controls .progress-holder .time {
+  display: inline-block;
+  position: absolute;
+  width: 30%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  right: 0;
+  font-size: 1rem;
+  color: #eee;
+}
+.player-holder .controls .progress-holder .progress {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  margin-top: -10px;
+  display: inline-block;
+  background: #eee;
+  width: 70%;
+  height: 20px;
+}
+.player-holder .controls .progress-holder .progress .bar {
+  transition: all 0.2s linear;
+  position: absolute;
+  height: 20px;
+  left: 0;
+  margin-top: -10px;
+  top: 50%;
+  right: 100%;
+}
+.player-holder .controls .progress-holder .progress .loaded-bar {
+  z-index: 2;
+  background-color: #999;
+}
+.player-holder .controls .progress-holder .progress .current-time-bar {
+  z-index: 3;
+  background-color: #11c678;
+}

@@ -1,0 +1,9 @@
+{% capture iframe_src %}{{ site.url }}{{ site.baseurl }}/assets/project/{{ page.post_id }}/{{ include.file_name }}{% endcapture %}
+<div class="iframe-wrapper">
+    <iframe src="{{ iframe_src }}"
+            noborder
+    ></iframe>
+    <a class="iframe-link" href="{{ iframe_src }}" target="_blank">
+        Open in new tab <i class="icon-external-link"></i>
+    </a>
+</div>

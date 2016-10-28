@@ -1,0 +1,1 @@
+sudo apt install android-tools-fastboot android-tools-adb

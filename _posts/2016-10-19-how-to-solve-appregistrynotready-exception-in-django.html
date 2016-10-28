@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "How to solve AppRegistryNotReady Exception in Django"
+date:   2015-10-10 22:00:00 +0330
+categories: help
+tags: [python, django, AppRegistryNotReady]
+post_id: django_apps_ready
+---
+<p>
+    Since Django 1.7 there is a new concept named 
+    {% include link.html 
+        href="https://docs.djangoproject.com/en/1.7/ref/applications/" 
+        external=true
+        text="Application" %}.
+    <br />
+    <span class="label label-problem">Problem:</span>
+    Many of us confronted with 
+    {% include link.html
+        href="https://docs.djangoproject.com/en/1.10/ref/exceptions/#django.core.exceptions.AppRegistryNotReady" 
+        text="AppRegistryNotReady"
+        external=true%}
+    <em>Exception</em> in our development process.
+    <br />
+    Yes, we can not use/import our models before the <em>Apps Registry</em> get ready. 
+</p>
+<p>
+    Suppose we have a project <em>demo</em> structured like below:
+</p>
+{% include code.html file_name="project_tree.txt" language="shell" %}
+{% include code.html file_name="__init__.py" language="python" %}
+<p>
+    You may noticed the optional and required methods and properties for each
+    <em>Application</em> you create.
+    <br />
+    Such as <em>name</em>, <em>label</em>, <em>verbos_name</em> and etc.
+    <br />
+    <span class="label label-solution">Solution:</span>
+    But the important method that can help us prevent this type of Exception,
+    is <em>ready()</em> method:
+</p>
+{% include code.html file_name="apps.py" language="python" %}
+<p>
+    The <em>Apps Registry</em> will invoke the <em>ready()</em> method of every registered
+    <em>AppConfig</em>s. 
+    So, as as you see above, we can import our models and work with them in this 
+    method without facing <em>AppRegistryNotReady</em> exception.
+</p>

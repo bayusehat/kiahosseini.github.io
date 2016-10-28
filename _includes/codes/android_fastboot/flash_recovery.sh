@@ -1,0 +1,1 @@
+sudo fastboot flash recovery CWMRecovery_D500_Philz.img

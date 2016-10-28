@@ -1,0 +1,13 @@
+<a href="{{ include.href }}"
+    {% if include.download %}
+        download="download"
+    {% endif %} 
+    >
+    {{ include.text }}
+</a>
+{% if include.external %}
+<i class="icon-external-link"></i>
+{% endif %}
+{% if include.download %}
+<i class="icon-download"></i>
+{% endif %}

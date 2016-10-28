@@ -1,0 +1,153 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body {
+  overflow: hidden;
+  background: url('../image/3dvideo-bg.jpg') no-repeat fixed #002A4A;
+  background-size: cover;
+  background-position: center 0;
+}
+.cube-holder {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.cube-holder .shadow {
+  position: absolute;
+  box-shadow: 0 0 0em 0px;
+  width: 100%;
+  bottom: -9em;
+  left: 0;
+  transform: scale(0);
+  transition: all 0.6s linear;
+}
+.cube-holder .shadow.shown {
+  transform: scale(1.2);
+  box-shadow: 0 0 5em 12px;
+}
+.cube-holder .start-video {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 3px;
+  opacity: 0.8;
+  transform: scale(1);
+  transition: transform 0.6s linear;
+}
+.cube-holder .start-video.hidden {
+  transform: scale(0);
+  transition: transform 0.6s linear;
+}
+.cube-holder .start-video:before {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background: #002A4A;
+  opacity: 0.4;
+  transition: opacity 0.6s linear;
+}
+.cube-holder .start-video:hover:before {
+  opacity: 0;
+  transition: opacity 0.6s linear;
+}
+.cube-holder .start-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.cube-holder .cube {
+  transform: scale(0);
+  position: relative;
+  width: inherit;
+  height: inherit;
+  cursor: move;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+.cube-holder .cube.shown {
+  transform: scale(1);
+}
+.cube-holder .cube .side {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.cube-holder .cube .side:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.cube-holder .cube .side iframe {
+  box-shadow: inset 0 0 0 1px red;
+  width: inherit;
+  height: inherit;
+  transform: scale(2);
+}
+.cube-holder .cube .right {
+  transform-origin: top right;
+}
+.cube-holder .cube .left {
+  transform-origin: center left;
+}
+.cube-holder .cube .top {
+  transform-origin: top center;
+}
+.cube-holder .cube .bottom {
+  transform-origin: bottom center;
+}

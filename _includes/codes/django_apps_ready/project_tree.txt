@@ -1,0 +1,14 @@
+demo
+├── blog
+│   ├── __init__.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── apps.py
+│   ├── signal_receivers.py
+│   └── views.py
+├── demo
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py

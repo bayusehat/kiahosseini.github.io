@@ -1,0 +1,10 @@
+demo
+├── demo
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── media
+├── statics
+├── manage.py
+└── demoPython.exe

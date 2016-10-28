@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    {% include head.html %}
+    <body class="{% if page.is_post %}post{% endif %} {{ page.body_classes }} {{ post.body_classes }}">
+        {% include google-analytic.html %}
+        <div class="whole-wrapper container-fluid">
+            <div class="left-wrapper open">
+                {% include left.html %}
+            </div>
+            <div class="content-wrapper left-open right-open">
+                {% include header.html %}
+                <div class="content {{ post.content_classes }} {{ page.content_classes }}">
+                    <div class="content-inner">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+            <div class="right-wrapper open">
+                {% include right.html %}
+            </div>
+        </div>
+        <script type="text/javascript">
+            var kiaBase = new Kia.Base();
+            kiaBase.buildGists();
+            $(document).ready(function () {
+                kiaBase.setCurrentLink();
+                $('.content-wrapper .content').perfectScrollbar();
+                $('.content-wrapper .content').perfectScrollbar('update');
+            });
+        </script>
+    </body>
+</html>

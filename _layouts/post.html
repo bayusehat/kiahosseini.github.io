@@ -1,0 +1,79 @@
+---
+layout: default
+tmp:
+custom_css: 
+    - /assets/libs/hljs/styles/ocean.css
+custom_js: 
+    - /assets/libs/hljs/highlight.pack.js
+---
+<script>hljs.initHighlightingOnLoad();</script>
+{% assign post = page %}
+{% if post.tags.size > 0 %}
+    {% capture tags_content %}
+        {% if post.tags.size == 1 %}
+            <i class="icon-price-tag"></i>
+        {% else %}
+        <i class="icon-price-tags"></i>
+        {% endif %}
+    {% endcapture %}
+    {% for post_tag in post.tags %}
+        {% for data_tag in site.data.tags %}
+            {% if data_tag.slug == post_tag %}
+                {% assign tag = data_tag %}
+            {% endif %}
+        {% endfor %}
+        {% if tag %}
+            {% capture tags_content_temp %}
+                {{ tags_content }}
+                <a href="/posts/tag/{{ tag.slug }}/">{{ tag.name }}</a>
+            {% if forloop.last == false %}, {% endif %}
+            {% endcapture %}
+            {% assign tags_content = tags_content_temp %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% assign tags_content = '' %}
+{% endif %}
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%b %-d, %Y" }}
+        </time>
+    </header>
+    <div class="post-content" itemprop="articleBody">
+        {{ content }}
+    </div>
+    <div class="post-tags">
+        {{ tags_content }}
+    </div>
+    <div class="post-share">
+        <span class='st_twitter' displayText='Tweet'></span>
+        <span class='st_googleplus' displayText='Google +'></span>
+        <span class='st_facebook' displayText='Facebook'></span>
+        <span class='st_linkedin' displayText='LinkedIn'></span>
+        <span class='st_email' displayText='Email'></span>
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//figmentofimaginationkiarashhosseini.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</article>
+<script type="text/javascript">var switchTo5x = true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+    stLight.options({
+        publisher: "5c77e685-c37c-440e-b930-09d2ab52923e",
+        doNotHash: false,
+        doNotCopy: false,
+        hashAddressBar: false
+    });
+</script>

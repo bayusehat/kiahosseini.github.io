@@ -1,0 +1,33 @@
+---
+layout: post
+title:  "Mobile HTML5 Video Player"
+date:   2016-10-28 22:00:00 +0330
+category: coding
+tags: [html, css3, coffeescript, javascript, vimeo]
+post_id: html5_mobile_video_player
+---
+<p>
+I tried to write a simple HTML5 Video player which runs in mobile devices:
+</p>
+{% include project_iframe.html file_name="mobile.html" %}
+<p>
+    I had to implement a player over video tag in mobile browser featuring 
+    <em>play, loop, pause, seeking, current downloading state,
+        current time/duration volume +/-, mute/unmute
+        and fullscreen toggle display.</em>
+    <br />
+    Also there are some problems on video format support itself in mobile 
+    browser, So I added an option to pass multiple sources for video tag.
+    <br />
+    It was better to support autoplay and seeking by mouse drag and screen touch,
+    but believe me, time matters!, and if I hade more time, 
+    I would definitely implement these options and more, too.
+    <br />
+    Mobile browsers support <em>DeviceOrientationEvent</em> event, so I tried to change
+    the video's perspective based on current gamma and alpha properties of 
+    this event.
+    <br />
+</p>
+{% include code.html file_name="mobile.html" language="html" %}
+{% include code.html file_name="mobile.less" language="less" %}
+{% include code.html file_name="mobile.coffee" language="coffeescreipt" %}

@@ -1,0 +1,109 @@
+@import (inline) "reset.css";
+@transition_time: 0.6s;
+
+.fullscreen(@z-index:2){
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%; 
+    height: 100%;
+    z-index: @z-index;
+}
+
+body{
+    overflow: hidden;
+    background: url('../image/3dvideo-bg.jpg') no-repeat fixed #002A4A;
+    background-size: cover;
+    background-position: center 0;
+}
+
+
+.cube-holder{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    .shadow{
+        position: absolute;
+        box-shadow: 0 0 0em 0px;
+        width: 100%;
+        bottom: -9em;
+        left: 0;
+        transform: scale(0);
+        transition: all @transition_time linear;
+        &.shown{
+            transform: scale(1.2);
+            box-shadow: 0 0 5em 12px;
+        }
+    }
+    .start-video{
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 3px;
+        opacity: 0.8;
+        transform: scale(1);
+        transition: transform @transition_time linear;
+        &.hidden{
+            transform: scale(0);
+            transition: transform @transition_time linear;
+        }
+        &:before{
+            cursor: pointer;
+            content: "";
+            .fullscreen(3);
+            background: #002A4A;
+            opacity: 0.4;
+            transition: opacity @transition_time linear; 
+        }
+        &:hover:before{
+            opacity: 0;
+            transition: opacity @transition_time linear; 
+        }
+        iframe{
+            .fullscreen(2);
+        }
+    }
+    .cube{
+        transform: scale(0);
+        position: relative;
+        width: inherit;
+        height: inherit;
+        cursor: move;
+        transform-style: preserve-3d;
+        transition: transform @transition_time;
+        &.shown{
+            transform: scale(1);
+        }
+        .side{
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            overflow: hidden;
+            opacity: 0.8;
+            background-color: rgba(0, 0, 0, 0.2);
+            &:after{
+                content: "";
+                .fullscreen();
+            }
+            iframe{
+                box-shadow: inset 0 0 0 1px red;
+                width: inherit;
+                height: inherit;
+                transform: scale(2);
+            }
+        }
+        .right {
+            transform-origin: top right;
+        }
+        .left {
+            transform-origin: center left;
+        }
+        .top {
+            transform-origin: top center;
+        }
+        .bottom {
+            transform-origin: bottom center;
+        }
+    }
+}

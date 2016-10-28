@@ -1,0 +1,9 @@
+{% capture src %}/assets/image/{{ page.post_id }}/{{ include.file_name }}{% endcapture %}
+<div class="image-wrapper">
+    <div class="image">
+        <img src="{{ src }}" />
+        {% if include.hide_caption != true %}
+            <h3 class="caption">{{ include.caption }}</h3>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="header">
+    <button class="left-toggle" onclick="kiaBase.toggleLeft()">
+        <i class="icon-arrow-left"></i>
+        <span>whoami</span>
+    </button>
+    <button class="right-toggle" onclick="kiaBase.toggleRight()">
+        <span>Higher Me</span>
+        <i class="icon-arrow-right"></i>
+    </button>
+    <div class="site-title">
+        <h1 class="clearfix">{{ site.title }}</h1>
+        <h4>{{ site.author }} [{{ site.expertise }}]</h4>
+        <ul class="menu">
+            <li>
+                <a href="/">~/</a>
+            </li>
+            <li class="parent">
+                Categories <i class="icon-arrow_drop_down"></i>
+                <ul>
+                    {% for cat in site.data.categories %}
+                        <li><a href="/posts/category/{{ cat.slug }}">{{ cat.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <a href="/pages/resume/">Resume</a> (<a href="/assets/file/resume.pdf" target="_blank">PDF</a>)
+            </li>
+            <li>
+                <a href="{{ '/feed.xml' | prepend: site.baseurl }}" target="_blank">RSS</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+---
+layout: post
+title:  "Running Multiple Django (python 3.4) Projects in Windows Server 2012 on IIS"
+date:   2016-01-05 22:00:00 +0330
+categories: server
+tags: [python, django, windows, iis, deploy, wfastcgi]
+post_id: multiple_django_iis
+---
+<p>
+    Recently, I have deployed several Django projects on Windows Server 2012 running on IIS.
+    I Thought maybe it's helpful to share my experiences.
+</p>
+<p class="inner-note">
+    Using Django 1.8.7, python 3.4, IIS 8, Windows Server 2012
+</p>
+<p>
+    First, add Web Server Role to activate IIS on Windows.
+    Tutorials on 
+    {% include link.html 
+        href="http://www.iis.net/learn/get-started/whats-new-in-iis-8/installing-iis-8-on-windows-server-2012" 
+        text="iis.net" 
+        external=true %}
+</p>
+<p class="inner-note">
+    Make sure to enable CGI.
+</p>
+<p>
+    Create a Django project by running:
+</p>
+{%include code.html file_name='create_project.cmd' language='bash' hide_file_name=true %}
+<p>
+    In your settings.py set MEDIA_ROOT, STATIC_ROOT, MEDIA_URL and STATIC_URL as below
+</p>
+{%include code.html file_name='settings.py' language='python' hide_file_name=true %}
+<p>
+    The directory structure for our demo project will be as below.
+</p>
+{%include code.html file_name='project_tree.txt' language='bash' hide_file_name=true %}
+<p class="inner-note">
+    We will use <em>wfastcgi.py</em> script to get our project running under <em>FastCGIModule</em> of IIS.
+    <br/>
+    First install <a target="_blank" href="https://pytools.codeplex.com/downloads/get/920475">wfastcgi.py</a>
+    <br/>
+    <span>This will add <em>wfastcgi.py</em> to <em>Scripts</em> directory of your python installation path.</span>
+</p>
+<p>
+    Open IIS. Add new website.
+    <br />
+    Set Physical Path to <em>D:\sites\demo\demo\</em>
+    <br />
+    Go to <em>Handler Mappings</em> and from the right panel choose <em>Add Module Mapping</em>.
+</p>
+{% include image.html file_name='add-module-mapping.png' caption='Add Module Mapping' %}
+<p>
+    <br />
+    Set <b>Executable:</b> to <em>D:\sites\demo\demo\demoPython.exe|C:\Python34\Scripts\wfastcgi.py</em>
+    <br />
+    Open <em>Request Restriction</em> and uncheck <em>Invoke handle if only request is mapped to</em>
+</p>
+{% include image.html file_name='request-restriction.png' caption='Invoke handle if only request is mapped to' %}
+<p>
+    Go to IIS Home and open <em>FastCGI Settings</em>.
+    <br />
+    Open the item having <em>D:\sites\demo\demo\demoPython.exe</em> as <em>Full Path</em>.
+    <br />
+    At FastCGI Properties open <em>Environmental Variables</em> and edit the collections.
+    <br />
+    Add new item: Name: WSGI_HANDLER, value: demo.wsgi.application
+</p>
+<p class="inner-note">
+    To serving media and static files by IIS, we create <em>Virtual Directories</em>
+    <br />
+    Add <em>static</em> and <em>media</em> <em>Virtual Directory</em> to <em>demo</em> website.
+    <span>Don't forget to remove <em>demoDjango</em> from <em>Handler Mappings</em> on both virtual directories</span>
+</p>

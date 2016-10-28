@@ -1,0 +1,38 @@
+.right-wrapper {
+  background-image: url('/assets/img/kiarash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  .right-side {
+    position: absolute;
+    bottom: $spacing-unit*2;
+    right: 10px;
+    left: 10px;
+    .resume {
+      display: inline-block;
+      width: calc(100% - 2px);
+      text-align: center;
+      margin: $spacing-unit/2 auto;
+      border-left: 2px solid rgba(0, 0, 0, 0.9);
+      padding: $spacing-unit/4 0;
+      color: #f8f8f8;
+      text-decoration: none;
+      letter-spacing: 3px;
+      background-color: rgba(0, 0, 0, 0.7);
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.9);;
+      }
+    }
+    .contacts-holder {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: $spacing-unit/2;
+      border-left: 2px solid rgba(0, 0, 0, 0.9);
+      color: #f8f8f8;
+      font-size: 0.8em;
+      i {
+        font-size: 0.8em;
+        margin-right: 5px;
+      }
+    }
+  }
+}
