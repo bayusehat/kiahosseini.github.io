@@ -13,7 +13,7 @@ email: kia.hosseini7@gmail.com
 description: >
     Notes from a depressed guy with motivated feelings!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://kiahosseini.github.io" # the base hostname & protocol for your site
+url: "https://kiahosseini.github.io" # the base hostname & protocol for your site
 twitter_username: KiaHosseini
 github_username:  kiahosseini
 
