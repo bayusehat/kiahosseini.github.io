@@ -19,5 +19,5 @@ github_username:  kiahosseini
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
  - jekyll-coffeescript
