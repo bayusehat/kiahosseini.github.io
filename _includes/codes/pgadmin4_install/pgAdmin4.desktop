@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=pgAdmin 4
-Exec=~/apps/pgadmin4/pgAdmin4.sh
-Icon=~/apps/pgadmin4/pgadmin.svg
+Exec=/home/user/apps/pgadmin4/pgAdmin4.sh
+Icon=/home/user/apps/pgadmin4/pgadmin.svg
 Type=Application
-Categories=Database
+Categories=Database;
 Terminal=false
 
