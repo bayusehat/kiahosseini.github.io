@@ -18,6 +18,6 @@ twitter_username: KiaHosseini
 github_username:  kiahosseini
 
 # Build settings
-markdown: kramdown
-plugins:
- - jekyll build
+# markdown: kramdown
+# plugins:
+ #- jekyll build
